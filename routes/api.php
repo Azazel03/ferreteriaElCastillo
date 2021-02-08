@@ -18,5 +18,6 @@ use App\Http\Controllers\NewsController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('news', [NewsController::class,'showNews']);
+Route::get('news', [NewsController::class,'show']);
+Route::get('news/{news}/{theme}', [NewsController::class,'setVisit']);
 Route::apiResource('newspapers/public/',NewsController::class);

@@ -46,26 +46,34 @@ class NewsController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     * @param  int  $new
+     * @param  int  $theme
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function setVisit($news,$theme){
+        DB::select("SET @p0='$news'");
+        DB::select("SET @p1='$theme'");
+        DB::select('CALL setVisit(@p0, @p1)');
+        DB::select('SELECT @p0 AS news, @p1 AS theme');
+        return;
     }
 
     /**
      * Display the specified resource.
+     *
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showNews()
+    public function show()
     {
+        $this->setVisit(0,0);
         $news = News::where('estado','S')->get();
         $theme = Theme::where('estado','S')->get();
         $banner = News::where('inicio','S')->get();
         $data = ['news' => $news,'theme' => $theme, 'banner' => $banner];
         return json_encode($data, JSON_UNESCAPED_UNICODE);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
