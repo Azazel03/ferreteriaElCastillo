@@ -48,7 +48,7 @@
                                 <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                                     <div class="form-group">
                                         <label>Artículo</label>
-                                        <p>{{ $noticias->article }}</p>
+                                        <p>{!! $noticias->article !!}</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">

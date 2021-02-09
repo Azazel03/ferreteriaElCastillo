@@ -79,7 +79,7 @@ class NewsInterfacesController extends Controller
     {
         #$noticia = News::where('id','=',$id)->get();
         #var_dump($noticia);
-        return view('news.edit',['newspaper'=>News::where('id','=',$id)->get(),'categorias' => Theme::all()]);
+        return view('news.edit',['noticias'=>News::where('id','=',$id)->get()->first(),'categorias' => Theme::all()]);
     }
 
     /**
@@ -108,7 +108,7 @@ class NewsInterfacesController extends Controller
         DB::select("SET @p6='".$request->get('inicio')."'");
         DB::select('CALL putNews(@p0, @p1, @p2, @p3, @p4, @p5, @p6)');
         DB::select('SELECT @p0 AS idnews, @p1 AS titulo, @p2 AS articulo, @p3 AS imagen, @p4 AS idcategoria, @p5 AS nombre_categoria, @p6 AS banner_inicio');
-        return view('news.index',['newspaper' => News::all()]);
+        return redirect('admin/news');
     }
 
     /**

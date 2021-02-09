@@ -38,7 +38,7 @@
                                             @else
                                                 <td><span class="badge badge-danger">Inactivo</span></td>
                                             @endif
-                                            <td><a href=""><button class="btn btn-danger">Editar</button></a></td>
+                                            <td><a href="{{url('admin/themes/edit',$categorias->id)}}"><button class="btn btn-danger">Editar</button></a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

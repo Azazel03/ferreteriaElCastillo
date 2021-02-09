@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsInterfacesController;
-use App\Http\Controllers\ThemesController;
+use App\Http\Controllers\ThemesInterfacesController;
 
 //Rutas Controlador News
 Route::get('news',[NewsInterfacesController::class, 'index']);
@@ -13,9 +13,9 @@ Route::get('news/edit/{id}',[NewsInterfacesController::class, 'edit']);
 Route::patch('news/update/{id}',[NewsInterfacesController::class, 'update']);
 
 //Rutas Controlador Theme
-Route::get('themes',[ThemesController::class, 'index']);
-Route::get('themes/create',[ThemesController::class, 'create']);
-Route::post('themes/store',[ThemesController::class, 'store']);
-
-
+Route::get('themes',[ThemesInterfacesController::class, 'index']);
+Route::get('themes/create',[ThemesInterfacesController::class, 'create']);
+Route::post('themes/store',[ThemesInterfacesController::class, 'store']);
+Route::get('themes/edit/{id}',[ThemesInterfacesController::class, 'edit']);
+Route::patch('themes/update/{id}',[ThemesInterfacesController::class, 'update']);
 

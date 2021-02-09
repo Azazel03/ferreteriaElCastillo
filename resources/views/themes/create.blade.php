@@ -18,7 +18,7 @@
                 </div>        
                 <div class="card-body">
                     <div class="col-md-12">
-                    {!!Form::open(array('url'=>'admin/themes/store','method'=>'POST','autocomplete'=>'off'))!!}
+                    {!!Form::open(array('url'=>'admin/themes/store','method'=>'POST','autocomplete'=>'off','name'=>'frm_crear','id'=>'frm_crear'))!!}
                     {{Form::token()}}
                     {{csrf_field()}}
                         <div class="row">
@@ -31,7 +31,7 @@
                             <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                                 <div class="form-group {{ $errors->has('fecha') ? ' has-error' : '' }}">
                                     <label for="descripcion">Descripción</label>
-                                    <textarea name="descripcion" value="{{old('descripcion')}}" class="form-control descripcion" placeholder="Descripción..." id="descripcion" rows="10" required></textarea>
+                                    <textarea name="descripcion" value="{{old('descripcion')}}" class="form-control description" placeholder="Descripción..." id="descripcion" rows="10" required></textarea>
                                 </div>
                             </div>                            
                         </div>                        
@@ -62,7 +62,7 @@
 @section('js')    
 <script>
 $("#enviar").click(function(e){
-    if(window.confirm('¿Desea registrar nueva Categoria?')){
+    if(window.confirm('¿Desea registrar nueva Noticia?')){
         submit();
     }else{
         e.preventDefault();

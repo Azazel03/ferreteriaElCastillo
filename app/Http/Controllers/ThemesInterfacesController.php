@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Models\Theme;
 use App\Http\Requests\ThemesRequest;
 
-class ThemesController extends Controller
+class ThemesInterfacesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,22 +30,22 @@ class ThemesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\ThemesRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(ThemesRequest $request)
     {
-        DB::select("SET @p0='".$request->get('nombre')."'");
-        DB::select("SET @p1='".$request->get('descripcion')."'");
-        DB::select('CALL setThemes(@p0, @p1)');
-        DB::select('SELECT @p0 AS nombre, @p1 AS descripcion');
-        return view('themes.index',['themes' => Theme::all()]);
+        $categoria=new Theme();
+        $categoria->name=$request->get('nombre');
+        $categoria->description=$request->get('descripcion');
+        $categoria->save();
+        return redirect('admin/themes');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Theme  $theme
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -58,36 +56,38 @@ class ThemesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Theme  $theme
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $categoria=Theme::where('id','=',$id)->get()->first();
-
         return view('themes.edit',['categoria'=>$categoria]);
-
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Theme  $theme
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ThemesRequest $request, $id)
     {
-        //
+        $categoria=Theme::find($id);
+        $categoria->name=$request->get('nombre');
+        $categoria->description=$request->get('descripcion');
+        $categoria->save();
+        return redirect('admin/themes');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Theme  $theme
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Theme $theme)
     {
         //
     }
