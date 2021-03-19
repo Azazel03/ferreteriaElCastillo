@@ -1,21 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NewsInterfacesController;
-use App\Http\Controllers\ThemesInterfacesController;
+use App\Http\Controllers\InfoController;
+use App\Http\Controllers\ProductsController;
 
-//Rutas Controlador News
-Route::get('news',[NewsInterfacesController::class, 'index']);
-Route::get('news/create',[NewsInterfacesController::class, 'create']);
-Route::post('news/store',[NewsInterfacesController::class, 'store']);
-Route::get('news/{id}',[NewsInterfacesController::class, 'show']);
-Route::get('news/edit/{id}',[NewsInterfacesController::class, 'edit']);
-Route::patch('news/update/{id}',[NewsInterfacesController::class, 'update']);
+//Rutas Controlador Info
+Route::get('welcome',[InfoController::class, 'index'])->middleware('auth');
 
-//Rutas Controlador Theme
-Route::get('themes',[ThemesInterfacesController::class, 'index']);
-Route::get('themes/create',[ThemesInterfacesController::class, 'create']);
-Route::post('themes/store',[ThemesInterfacesController::class, 'store']);
-Route::get('themes/edit/{id}',[ThemesInterfacesController::class, 'edit']);
-Route::patch('themes/update/{id}',[ThemesInterfacesController::class, 'update']);
-
+//Rutas Controlador Products
+Route::get('products',[ProductsController::class, 'index'])->middleware('auth');
+Route::get('products/create',[ProductsController::class, 'create'])->middleware('auth');
+Route::post('products/store',[ProductsController::class, 'store'])->middleware('auth');
+Route::get('products/{id}',[ProductsController::class, 'show'])->middleware('auth');
+Route::get('products/edit/{id}',[ProductsController::class, 'edit'])->middleware('auth');
+Route::patch('products/update/{id}',[ProductsController::class, 'update'])->middleware('auth');

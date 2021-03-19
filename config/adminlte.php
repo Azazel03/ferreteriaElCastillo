@@ -225,24 +225,24 @@ return [
 
     'menu' => [
         [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
-        [
             'text' => 'blog',
-            'url'  => 'admin/blog',
+            'url'  => 'admin/welcome',
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Noticias',
-            'url'         => 'admin/news',
-            'icon'        => 'far fa-fw fa-newspaper',
+            'text'        => 'Inicio',
+            'url'         => 'admin/welcome',
+            'icon'        => 'fas fa-chart-pie',
         ],
         [
-            'text'        => 'Categorias',
+            'text'        => 'Productos',
+            'url'         => 'admin/products',
+            'icon'        => 'fas fa-briefcase',
+        ],
+        [
+            'text'        => 'Reportes',
             'url'         => 'admin/themes',
-            'icon'        => 'far fa-bookmark',
+            'icon'        => 'fas fa-chart-line',
         ],
         ['header' => 'CONFIGURACIÓN DE CUENTAS'],
         [

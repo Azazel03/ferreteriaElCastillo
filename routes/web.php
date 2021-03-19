@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia\Inertia::render('Dashboard');
 })->name('dashboard');
+Route::resource('products',ProductsController::class);
